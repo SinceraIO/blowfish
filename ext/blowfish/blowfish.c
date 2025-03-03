@@ -478,7 +478,7 @@ VALUE rb_decrypt(VALUE self, VALUE val) {
     int length = 8;
     bf = malloc(sizeof(Blowfish));
 
-    VALUE encryption_key = rb_const_get(rb_cBlowfish, rb_intern("ENCRYPTION_KEY"));
+    VALUE encryption_key = rb_funcall(rb_cBlowfish, rb_intern("encryption_key"), 0);
     bf_init_hex_key(bf, StringValuePtr(encryption_key));
 
     char *text = StringValuePtr(val);
