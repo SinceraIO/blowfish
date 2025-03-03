@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    blowfish (1.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rake (13.2.1)
+    rake-compiler (1.2.9)
+      rake
+
+PLATFORMS
+  arm64-darwin-23
+  ruby
+
+DEPENDENCIES
+  blowfish!
+  rake (~> 13.0)
+  rake-compiler
+
+BUNDLED WITH
+   2.6.3
