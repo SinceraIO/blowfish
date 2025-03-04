@@ -476,6 +476,7 @@ VALUE rb_decrypt(VALUE self, VALUE val) {
 
     Blowfish *bf;
     int length = 8;
+    int new_length = 8;
     bf = malloc(sizeof(Blowfish));
 
     VALUE encryption_key = rb_funcall(rb_cBlowfish, rb_intern("encryption_key"), 0);
@@ -488,11 +489,11 @@ VALUE rb_decrypt(VALUE self, VALUE val) {
         data[i] = bf_hex_to_dec(text[i * 2]) * 16 + bf_hex_to_dec(text[i * 2 + 1]);
     }
 
-    byte* result = bf_decrypt_ecb(bf, data, length, &length);
+    byte* result = bf_decrypt_ecb(bf, data, length, &new_length);
 
     free(bf);
 
-    return rb_str_new2(result);
+    return rb_str_new(result, new_length + 1);
 }
 
 RUBY_FUNC_EXPORTED void
